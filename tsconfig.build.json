@@ -1,0 +1,20 @@
+{
+  "extends": "@tsconfig/recommended",
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.stub.ts",
+    "node_modules",
+    "dist"
+  ],
+  "compilerOptions": {
+    "target": "ESNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "paths": {
+      "@circle/*": ["./packages/*/"]
+    }
+  }
+}
