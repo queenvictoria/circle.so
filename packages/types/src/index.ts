@@ -144,6 +144,35 @@ export type SpacesIndexProps = {
   page?: number
 }
 
+export type SpacesIndexResponse = {
+
+}
+
+export type TopicProps = {}
+
+export type SpaceProps = {
+  id: number
+  name: string
+  slug: string
+  space_group_id: number    // 431824
+  space_group_name: string  // 'Public Spaces'
+  url: string
+  community_id: number      // 185986
+  is_private?: boolean
+  hide_post_settings?: boolean
+  display_view: string      // 'posts'
+  post_ids: number[]
+  is_post_disabled?: boolean
+  space_type: string        // 'basic'
+  hide_topic_settings?: boolean
+  is_topic_disabled?: boolean
+  topic_ids: number[]
+  topics: TopicProps[]
+  emoji?: string
+  custom_emoji_url?: string
+  custom_emoji_dark_url?: string
+}
+
 export type SpacesCreateProps = {
   community_id: number
   name: string

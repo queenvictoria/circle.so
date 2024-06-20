@@ -5,7 +5,8 @@
   "scripts": {
     "build": "tsc --build --verbose tsconfig.build.json",
     "build:types": "tsc --project ./packages/types/tsconfig.pkg.json",
-    "clean": "npm exec --workspaces -- npx rimraf node_modules && npx rimraf node_modules",
+    "build:core": "tsc --project ./packages/core/tsconfig.pkg.json",
+    "clean": "npm exec --workspaces -- npx rimraf node_modules && npx rimraf node_modules && npm exec --workspaces -- npx rimraf dist && npx rimraf dist",
     "test": "jest"
   },
   "workspaces": [
