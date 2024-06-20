@@ -43,7 +43,7 @@ test('List community spaces', async () => {
     expect(space).toHaveProperty('url')
   })
 
-  id = body[0].id
+  id = data[0].id
 }, 20 * 1000)
 
 test('Get a space', async () => {
