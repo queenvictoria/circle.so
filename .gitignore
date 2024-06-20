@@ -4,4 +4,6 @@ tsconfig.tsbuildinfo
 **/dist/
 packages/**/LICENSE
 packages/**/README.md
+packages/**/src/index.js
+packages/**/src/index.d.ts
 coverage/
