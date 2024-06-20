@@ -183,6 +183,12 @@ export type SpacesCreateProps = {
   topics?: number[]
 }
 
+export type SpacesCreateResponse = {
+  success: boolean
+  message: string
+  space: SpaceProps
+}
+
 export type SpacesShowProps = {
   id: number
   community_id: number
