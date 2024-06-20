@@ -10,7 +10,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rm -rf dist/* && tsc -p tsconfig.pkg.json",
+    "build": "tsc --project tsconfig.pkg.json",
     "prepack": "cp ../../README.md ./ && cp ../../LICENSE ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

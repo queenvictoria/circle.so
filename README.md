@@ -62,4 +62,6 @@ $ npm publish --access public -ws --verbose
 ```
 
 ### Troubleshooting
-If VSCode doesn't recognise the imports: reopen the project.
+* If VSCode doesn't recognise the imports: reopen the project.
+* If VSCode or build complains about types build the `types` package first
+  `npm run build:types`

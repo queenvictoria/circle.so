@@ -4,6 +4,7 @@
   "description": "Client wrappers around the Circle.so API.",
   "scripts": {
     "build": "tsc --build --verbose tsconfig.build.json",
+    "build:types": "tsc --project ./packages/types/tsconfig.pkg.json",
     "clean": "npm exec --workspaces -- npx rimraf node_modules && npx rimraf node_modules",
     "test": "jest"
   },
