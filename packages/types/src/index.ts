@@ -191,7 +191,7 @@ export type SpacesCreateResponse = {
 
 export type SpacesShowProps = {
   id: number
-  community_id: number
+  community_id?: number
 }
 
 

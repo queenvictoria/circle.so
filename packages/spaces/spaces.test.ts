@@ -62,6 +62,23 @@ test('Show a space', async () => {
   expect(data).toHaveProperty('url')
 }, 20 * 1000)
 
+
+test('Get a space without providing a community_id', async () => {
+  const res = await api.show({ id })
+
+  expect(res.response).toHaveProperty('status')
+  expect(res.response.status).toBe(200)
+
+  const data = res.data as SpaceProps[]
+  expect(typeof data).toEqual("object")
+  console.log(JSON.stringify(data, null, 2))
+
+  expect(data).toHaveProperty('id')
+  expect(data).toHaveProperty('name')
+  expect(data).toHaveProperty('slug')
+  expect(data).toHaveProperty('url')
+}, 20 * 1000)
+
 test('Create a space', async () => {
   const name = "Test space"
   const props: SpacesCreateProps = { name, community_id }
@@ -93,6 +110,10 @@ test('Destroy a space', async () => {
   const data = res.data
   expect(data).toEqual({})
 
-  res = await api.retrieve({ community_id, id: new_id })
-  console.log(res)
+  // Check if it is really gone. This will throw.
+  const action = async () => {
+    await api.retrieve({ community_id, id: new_id })
+  }
+  // Why does fetching a missing space throw a 500?
+  await expect(action()).rejects.toThrow('Internal Server Error')
 })

@@ -65,3 +65,5 @@ $ npm publish --access public -ws --verbose
 * If VSCode doesn't recognise the imports: reopen the project.
 * If VSCode or build complains about types build the `types` package first
   `npm run build:types`
+* If other packages aren't seeming to build while developing remove the
+  additional artefacts in `./src` and run the build script. We should fix this.

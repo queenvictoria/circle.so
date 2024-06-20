@@ -40,8 +40,15 @@ export class BaseService {
     return fetch(url, opts)
       .then(async res => {
         let data = {}
-        if ( opts.method && !['DELETE'].includes(opts.method))
-          data = await res.json()
+        // Any of these codes should throw.
+        if ( [500].includes(res.status) ) throw new Error(res.statusText)
+        if ( opts.method && !['DELETE'].includes(opts.method)) {
+          try {
+            data = await res.json()
+          } catch (err) {
+            console.error(err)
+          }
+        }
         return {
           response: res, data
         }
