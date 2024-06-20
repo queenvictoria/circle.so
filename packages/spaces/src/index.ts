@@ -1,7 +1,6 @@
 import { BaseService } from '@circle/core'
 
 import {
-  type SpacesProps,
   type SpacesCreateProps,
   type SpacesIndexProps,
   type SpacesShowProps,

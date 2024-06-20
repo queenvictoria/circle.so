@@ -71,7 +71,6 @@ test('Get a space without providing a community_id', async () => {
 
   const data = res.data as SpaceProps[]
   expect(typeof data).toEqual("object")
-  console.log(JSON.stringify(data, null, 2))
 
   expect(data).toHaveProperty('id')
   expect(data).toHaveProperty('name')
@@ -99,7 +98,7 @@ test('Create a space', async () => {
   new_id = data.space.id
 })
 
-test.todo('Update a space')
+// The API can't update Spaces.
 
 test('Destroy a space', async () => {
   let res = await api.destroy({ id: new_id })
