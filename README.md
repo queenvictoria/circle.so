@@ -1,5 +1,7 @@
 # [circle](https://circle.so/) community API client
 
+Create an API token here:
+`https://circle.example.com/settings/api/new`
 
 ## Installation
 ```bash
@@ -45,8 +47,8 @@ $ ls -la node_modules/@circle/
 ### Require a new package
 
 ```bash
-$ npm install @circle/types --workspace ./packages/user
-$ cat packages/user/package.json | grep -C1 circle
+$ npm install @circle/types --workspace ./packages/spaces
+$ cat packages/spaces/package.json | grep -C1 circle
 $ npm ls
 ```
 
@@ -58,3 +60,6 @@ $ npm version patch -ws --verbose
 # git commit and push
 $ npm publish --access public -ws --verbose
 ```
+
+### Troubleshooting
+If VSCode doesn't recognise the imports: reopen the project.

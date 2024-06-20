@@ -1,0 +1,19 @@
+{
+  "author": "",
+  "description": "",
+  "devDependencies": {},
+  "keywords": [],
+  "license": "ISC",
+  "main": "dist/index",
+  "name": "@circle/types",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rm -rf dist/* && tsc -p tsconfig.pkg.json",
+    "prepack": "cp ../../README.md ./ && cp ../../LICENSE ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "types": "dist/index",
+  "version": "0.0.25"
+}

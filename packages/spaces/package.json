@@ -1,0 +1,22 @@
+{
+  "author": "",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "main": "dist/index",
+  "name": "@circle/spaces",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rm -rf dist/* && tsc -p tsconfig.pkg.json",
+    "prepack": "cp ../../README.md ./ && cp ../../LICENSE ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "types": "dist/index.d.ts",
+  "version": "0.0.25",
+  "dependencies": {
+    "@circle/core": "*",
+    "@circle/types": "^0.0.25"
+  }
+}
