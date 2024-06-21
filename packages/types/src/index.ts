@@ -11,7 +11,9 @@ export type SpacesIndexProps = {
 
 export type SpacesIndexResponse = SpaceProps[]
 
-export type TopicProps = {}
+export type TopicProps = SpaceProps & {
+  space_slug: string
+}
 
 export type SpaceProps = {
   id: number
@@ -68,8 +70,17 @@ export type PostsIndexProps = {
   status?: string           // all
   topics?: number[]         // Optional: Array with topic IDS for filtering posts
 }
+export type BodyProps = {
+  id: number
+  name: string
+  body: string
+  record_type: string // 'Post'
+  record_id: number // same as id?
+  created_at: Date
+  updated_at: Date
+}
 
-export type PostProps = {
+export type PostsCreateProps = {
   community_id?: number
   space_id: number
   status?: string // published (default), draft, scheduled
@@ -94,12 +105,36 @@ export type PostProps = {
   topics?: number[] //  Array with topic IDS, Max of 5 topics per Post
 }
 
-export type PostsCreateProps = PostProps
+export type PostProps = PostsCreateProps & {
+  id: number
+  body: BodyProps
+  url: Url
+  space_name: string
+  user_id: number
+  user_name: string
+  comments_count: number
+  user_avatar_url: Url | null
+  created_at: Date
+  updated_at: Date
+  cover_image?: any
+  cover_image_url?: Url | null
+  cardview_thumbnail?: any
+  cardview_url?: Url | null
+  flagged_for_approval_at: Date
+  custom_html?: string
+  likes_count: number
+  topics?: TopicProps[]
+  user_posts_count: number
+  user_topics_count: number
+  user_likes_count: number
+  user_comments_count: number
+}
 
 export type PostsCreateResponse = {
   success: boolean
   message: string
   post: PostProps
+  topic: PostProps // Same data as post(?)
 }
 
 export type PostsShowProps = {

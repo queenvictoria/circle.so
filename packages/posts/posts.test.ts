@@ -43,15 +43,40 @@ it('Send a post to a space', async () => {
   const body = "Lorem ipsum"
   const props: PostsCreateProps = { space_id, name, body }
 
-  const res = api.create(props)
+  const res = await api.add(props)
   expect(res.response).toHaveProperty('status')
   expect(res.response.status).toBe(200)
 
-  const data = res.data as PostProps
+  const data = res.data as PostsCreateResponse
   expect(typeof data).toEqual("object")
 
-  expect(data).toHaveProperty('id')
-  expect(data).toHaveProperty('name')
-  expect(data).toHaveProperty('slug')
-  expect(data).toHaveProperty('url')
+  expect(data).toHaveProperty('success')
+  expect(data.success).toBe(true)
+
+  expect(data).toHaveProperty('post')
+  expect(data.post).toHaveProperty('name')
+  expect(data.post.name).toEqual(name)
+  expect(data.post).toHaveProperty('id')
+  expect(data.post).toHaveProperty('body')
+  expect(data.post.body).toHaveProperty('body')
+  expect(data.post.body).toHaveProperty('record_type')
+  expect(data.post.body.record_type).toEqual('Post')
+
+  expect(data).toHaveProperty('topic')
+  expect(data.topic).toHaveProperty('name')
+  expect(data.topic.name).toEqual(name)
+
+  id = data.post.id
+})
+
+it.todo('Show a post')
+
+it('Destroy a post', async () => {
+  const res = await api.destroy({ id })
+  expect(res.response).toHaveProperty('status')
+  expect(res.response).toHaveProperty('statusText')
+  expect(res.response.status).toEqual(200)
+  expect(res.response.statusText).toEqual('OK')
+
+  // @TODO Try to get the post
 })
