@@ -1,9 +1,18 @@
 {
   "extends": "./tsconfig.build.json",
   "compilerOptions": {
-    "baseUrl": "./"
+    "baseUrl": "./",
+    // Don't create anything while developing.
+    "noEmit": true,
+    // Override paths while developing to point to src rather than dist.
+    "paths": {
+      "@circle/*": ["packages/*/src"]
+    }
   },
   "include": [
     "./packages/*/**.ts"
-  ]
+  ],
+  // Override the build extended exclude. Required so that VSCode can locate
+  // src (?) files.
+  "exclude": []
 }
