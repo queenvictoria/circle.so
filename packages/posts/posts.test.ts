@@ -2,8 +2,8 @@ import { Posts } from '@circle/posts'
 import { Spaces } from '@circle/spaces'
 
 import {
-  SpaceProps,
-  SpacesCreateResponse,
+  type SpaceProps,
+  type SpacesCreateResponse,
   type PostsCreateProps,
   type PostsCreateResponse,
   type PostProps,
@@ -35,16 +35,23 @@ beforeEach(async () => {
 })
 
 afterEach(async () => {
-  await spaces_api.delete({id: space_id})
+  await spaces_api.destroy({id: space_id})
 })
 
 it('Send a post to a space', async () => {
-  const name = "Test space"
+  const name = "Test post"
   const body = "Lorem ipsum"
   const props: PostsCreateProps = { space_id, name, body }
 
-  const res = api.create()
+  const res = api.create(props)
   expect(res.response).toHaveProperty('status')
   expect(res.response.status).toBe(200)
 
+  const data = res.data as PostProps
+  expect(typeof data).toEqual("object")
+
+  expect(data).toHaveProperty('id')
+  expect(data).toHaveProperty('name')
+  expect(data).toHaveProperty('slug')
+  expect(data).toHaveProperty('url')
 })

@@ -17,6 +17,7 @@
   "version": "0.0.1",
   "dependencies": {
     "@circle/core": "*",
-    "@circle/types": "^0.0.1"
+    "@circle/types": "^0.0.1",
+    "@circle/spaces": "^0.0.1"
   }
 }
