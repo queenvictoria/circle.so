@@ -57,7 +57,65 @@ export type SpacesShowProps = {
   community_id?: number
 }
 
-export type CircleProps = SpacesIndexProps | SpacesCreateProps | SpacesShowProps
+export type PostsIndexProps = {
+  community_id?: number
+  space_group_id?: number
+  space_id: number
+  sort?: string             // latest (default) | active
+  per_page?: number         // defaults to 60. Maximum 100.
+  page?: number
+  search_text?: string
+  status?: string           // all
+  topics?: number[]         // Optional: Array with topic IDS for filtering posts
+}
+
+export type PostProps = {
+  community_id?: number
+  space_id: number
+  status?: string // published (default), draft, scheduled
+  published_at?: Date // Must be in the past if 'scheduled'
+  name: string
+  body: string
+  is_pinned?: boolean // true
+  is_comments_enabled?: boolean // true
+  is_comments_closed?: boolean // false
+  is_liking_enabled?: boolean // true
+  user_email?: string // Optional. Email of the community member to post from. Defaults to admin if empty.
+  skip_notifications?: boolean // false
+  slug?: string
+  internal_custom_html?: string
+  is_truncation_disabled?: boolean
+  hide_meta_info?: boolean
+  meta_title?: string
+  meta_description?: string
+  opengraph_title?: string
+  opengraph_description?: string
+  hide_from_featured_areas?: boolean
+  topics?: number[] //  Array with topic IDS, Max of 5 topics per Post
+}
+
+export type PostsCreateProps = PostProps
+
+export type PostsCreateResponse = {
+  success: boolean
+  message: string
+  post: PostProps
+}
+
+export type PostsShowProps = {
+  id: number
+  community_id?: number
+}
+
+export type PostsUpdateProps = {
+  id: number
+  user_id?: number //
+} & Partial<PostsCreateProps>
+
+export type CircleProps =
+  SpacesIndexProps | SpacesCreateProps | SpacesShowProps
+  |
+  PostsIndexProps | PostsCreateProps | PostsShowProps
 
 export type CircleResponse = {
   response: Response

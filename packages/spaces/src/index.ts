@@ -20,7 +20,7 @@ export class Spaces extends BaseService {
    * List all spaces in a community
    */
   list (params?: SpacesIndexProps): Promise<CircleResponse> {
-    if ( !params?.community_id) throw new Error("Feed requires a `community_id` integer.")
+    if ( !params?.community_id) throw new Error("Index requires a `community_id` integer.")
 
     return this._get([], params)
   }

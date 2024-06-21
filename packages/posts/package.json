@@ -4,7 +4,7 @@
   "keywords": [],
   "license": "ISC",
   "main": "dist/index",
-  "name": "@circle/spaces",
+  "name": "@circle/posts",
   "publishConfig": {
     "access": "public"
   },

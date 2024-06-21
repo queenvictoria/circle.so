@@ -1,18 +1,12 @@
 import { Spaces } from '@circle/spaces'
 
 import {
-  type CircleResponse,
   type SpacesCreateProps,
   type SpacesCreateResponse,
-  type SpacesProps,
-  type SpacesIndexResponse,
   type SpaceProps,
 } from '@circle/types'
 
-
 import { expect, test } from '@jest/globals'
-// Use while updating src and remove after build.
-// import { DocumentProps, EntityTypeProps, StoredSearchFeedProps } from '@opoint/types/src'
 
 // This seems to be us
 // const community_id = 1

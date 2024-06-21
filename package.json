@@ -6,13 +6,15 @@
     "build": "tsc --build --verbose tsconfig.build.json",
     "build:types": "rm -rf ./packages/types/dist && tsc --project ./packages/types/tsconfig.pkg.json",
     "build:core": "rm -rf ./packages/core/dist && tsc --project ./packages/core/tsconfig.pkg.json",
+    "build:spaces": "rm -rf ./packages/spaces/dist && tsc --project ./packages/spaces/tsconfig.pkg.json",
     "clean": "npm exec --workspaces -- npx rimraf node_modules && npx rimraf node_modules && npm exec --workspaces -- npx rimraf dist && npx rimraf dist",
     "test": "jest"
   },
   "workspaces": [
     "packages/types",
     "packages/core",
-    "packages/spaces"
+    "packages/spaces",
+    "packages/posts"
   ],
   "repository": {
     "type": "git",

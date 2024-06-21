@@ -61,6 +61,12 @@ $ npm version patch -ws --verbose
 $ npm publish --access public -ws --verbose
 ```
 
+### @TODO
+- `npm run build` creates artefacts in `package/*/src` files that prevent
+  interim package builds to not run which causes confusion.
+- Why do we need to build while developing anyway? Shouldn't jest be able to
+  run without building packages?
+
 ### Troubleshooting
 * If VSCode doesn't recognise the imports: reopen the project.
 * If VSCode or build complains about types build the `types` package first
