@@ -21,9 +21,8 @@
     "url": "git+https://github.com/queenvictoria/circle.git"
   },
   "keywords": [
-    "news",
-    "news feed",
-    "realtime news"
+    "community",
+    "discussion"
   ],
   "author": {
     "name": "Snow",
@@ -52,6 +51,8 @@
   },
   "dependencies": {
     "@circle/core": "^0.0.1",
+    "@circle/posts": "^0.0.1",
+    "@circle/spaces": "^0.0.1",
     "@circle/types": "^0.0.1"
   }
 }
