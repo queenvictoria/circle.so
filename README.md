@@ -73,3 +73,5 @@ $ npm publish --access public -ws --verbose
   `npm run build:types`
 * If other packages aren't seeming to build while developing remove the
   additional artefacts in `./src` and run the build script. We should fix this.
+* Until overrode the `paths` and `exclude` in `tsconfig.json` at the root level
+  we had all sorts of errors with resolving packages.
