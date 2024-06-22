@@ -106,7 +106,9 @@ it('Destroy a post', async () => {
 
   expect(res).toEqual(undefined)
 
-  // Try to get the post
-  const data = await api.retrieve({ community_id, id })
-  expect(data).toEqual(undefined)
+  // Try to get the post. This will throw.
+  const action = async () => {
+    await api.retrieve({ id })
+  }
+  await expect(action()).rejects.toThrow('Post not found')
 })

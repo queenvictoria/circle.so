@@ -7,8 +7,6 @@ export type SpacesIndexProps = {
   page?: number
 }
 
-export type SpacesIndexResponse = SpaceProps[]
-
 export type TopicProps = SpaceProps & {
   space_slug: string
 }
@@ -46,6 +44,7 @@ export type SpacesCreateProps = {
   topics?: number[]
 }
 
+export type SpacesIndexResponse = SpaceProps[]
 export type SpacesCreateResponse = SpaceProps
 
 export type SpacesShowProps = {
@@ -64,7 +63,6 @@ export type PostsIndexProps = {
   status?: string           // all
   topics?: number[]         // Optional: Array with topic IDS for filtering posts
 }
-
 
 export type BodyProps = {
   id: number
@@ -126,12 +124,8 @@ export type PostProps = PostsCreateProps & {
   user_comments_count: number
 }
 
-export type PostsCreateResponse = {
-  success: boolean
-  message: string
-  post: PostProps
-  topic: PostProps // Same data as post(?)
-}
+export type PostsIndexResponse = PostProps[]
+export type PostsCreateResponse = PostProps
 
 export type PostsShowProps = {
   id: number
