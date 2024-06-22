@@ -5,19 +5,31 @@ Create an API token here:
 
 ## Installation
 ```bash
-$ npm install --save @circle/user
+$ npm install --save @circle/posts
+$ npm install --save @circle/spaces
 $ npm install --save-dev @circle/types
 ```
 
-## Using user
+## Using spaces
 
-See `tests/user.test.ts` and `@cidle/types` for more options.
+See `tests/spaces.test.ts` and `@circle/types` for more options.
 
 ```ts
-import { User } from '@circle/user'
+import { Spaces } from '@circle/spaces'
 // Pass your API key to the constructor
-const api = new User({ api_key: process.env.CIRCLE_API_KEY })
+const api = new Spaces({ api_key: process.env.CIRCLE_API_KEY })
+await api.add({ community_id: 1, name: "New space" })
 ```
+
+## Current support
+- Spaces CRUD
+- Posts CRUD
+
+## @TODO
+- Refactor to not return response; only return what is asked for and throw
+  errors for failure states.
+- Invite members
+- Add members to spaces
 
 ## Contributing
 
@@ -64,8 +76,6 @@ $ npm publish --access public -ws --verbose
 ### @TODO
 - `npm run build` creates artefacts in `package/*/src` files that prevent
   interim package builds to not run which causes confusion.
-- Why do we need to build while developing anyway? Shouldn't jest be able to
-  run without building packages?
 
 ### Troubleshooting
 * If VSCode doesn't recognise the imports: reopen the project.
