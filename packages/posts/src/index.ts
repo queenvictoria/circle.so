@@ -42,6 +42,7 @@ export class Posts extends BaseService {
    */
   retrieve ({id, community_id}: PostsShowProps): Promise<CircleResponse> {
     const params = { community_id } as PostsShowProps
+
     return this._get([id.toString()], params)
   }
   show = this.retrieve

@@ -12,7 +12,6 @@ import {
 import { expect, test } from '@jest/globals'
 
 // This seems to be us
-// const community_id = 1
 const community_id = 185986
 let id = 0, new_id = 0
 
@@ -26,7 +25,7 @@ const spaces_api = new Spaces({ api_key: process.env.CIRCLE_API_KEY })
 let space_id:number
 
 // Create a space
-beforeEach(async () => {
+beforeAll(async () => {
   const name = "Test space"
 
   const res = await spaces_api.add({ name, community_id})
@@ -34,7 +33,7 @@ beforeEach(async () => {
   space_id = data.space.id
 })
 
-afterEach(async () => {
+afterAll(async () => {
   await spaces_api.destroy({id: space_id})
 })
 
@@ -69,14 +68,28 @@ it('Send a post to a space', async () => {
   id = data.post.id
 })
 
-it.todo('Show a post')
+it('Show a post', async () => {
+  const res = await api.show({ id, community_id })
+
+  expect(res).toHaveProperty('data')
+  const data = res.data as PostProps
+  expect(typeof data).toEqual("object")
+
+  expect(data).toHaveProperty('id')
+  expect(data.id).toBe(id)
+})
 
 it('Destroy a post', async () => {
   const res = await api.destroy({ id })
+
   expect(res.response).toHaveProperty('status')
   expect(res.response).toHaveProperty('statusText')
   expect(res.response.status).toEqual(200)
   expect(res.response.statusText).toEqual('OK')
 
-  // @TODO Try to get the post
+  // Try to get the post
+  const post = await api.retrieve({ community_id, id })
+  expect(post).toHaveProperty('data')
+  expect(post.data).toHaveProperty('success')
+  expect(post.data.success).toEqual(false)
 })

@@ -28,8 +28,6 @@ export class BaseService {
     if ( paths && paths.length > 0 ) {
       paths.forEach(p => fragments.push(p))
     }
-    // Add a trailing slash
-    fragments.push('')
     const url = new URL(fragments.join('/'))
     if (params)
       url.search = new URLSearchParams(params).toString()

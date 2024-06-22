@@ -63,7 +63,7 @@ test('Get a space without providing a community_id', async () => {
   expect(res.response).toHaveProperty('status')
   expect(res.response.status).toBe(200)
 
-  const data = res.data as SpaceProps[]
+  const data = res.data as SpaceProps
   expect(typeof data).toEqual("object")
 
   expect(data).toHaveProperty('id')
@@ -95,7 +95,7 @@ test('Create a space', async () => {
 // The API can't update Spaces.
 
 test('Destroy a space', async () => {
-  let res = await api.destroy({ id: new_id })
+  const res = await api.destroy({ id: new_id })
 
   expect(res.response).toHaveProperty('status')
   expect(res.response.status).toBe(200)
