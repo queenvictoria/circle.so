@@ -37,7 +37,7 @@ export class BaseService {
 
     return fetch(url, opts)
       .then(async res => {
-        let data = {}
+        let data
         // Any of these codes should throw.
         if ( [500].includes(res.status) ) throw new Error(res.statusText)
         if ( opts.method && !['DELETE'].includes(opts.method)) {
@@ -47,9 +47,7 @@ export class BaseService {
             console.error(err)
           }
         }
-        return {
-          response: res, data
-        }
+        return data
       })
   }
 

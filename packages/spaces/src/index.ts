@@ -4,7 +4,8 @@ import {
   type SpacesCreateProps,
   type SpacesIndexProps,
   type SpacesShowProps,
-  type CircleResponse
+  type SpacesIndexResponse,
+  type SpaceProps
 } from '@circle/types'
 
 
@@ -19,7 +20,7 @@ export class Spaces extends BaseService {
   /**
    * List all spaces in a community
    */
-  list (params?: SpacesIndexProps): Promise<CircleResponse> {
+  list (params?: SpacesIndexProps): Promise<SpacesIndexResponse> {
     if ( !params?.community_id) throw new Error("Index requires a `community_id` integer.")
 
     return this._get([], params)
@@ -29,15 +30,18 @@ export class Spaces extends BaseService {
   /**
    * Create a space in a community
    */
-  add (params: SpacesCreateProps): Promise<CircleResponse> {
-    return this._post(params)
+  async add (params: SpacesCreateProps): Promise<SpaceProps> {
+    const data = await this._post(params)
+
+    if (data?.space) return data.space
+    throw new Error("Failed to create a space.")
   }
   create = this.add
 
   /**
    * Get a single space
    */
-  retrieve ({id, community_id}: SpacesShowProps): Promise<CircleResponse> {
+  retrieve ({id, community_id}: SpacesShowProps): Promise<SpaceProps> {
     const params = { community_id } as SpacesShowProps
     return this._get([id.toString()], params)
   }
@@ -46,7 +50,7 @@ export class Spaces extends BaseService {
   /**
    * Delete a single space
    */
-  delete ({id}: {id: number}): Promise<CircleResponse> {
+  delete ({id}: {id: number}): Promise<undefined> {
     if (!id) throw new Error("Delete requires an ID.")
 
     return this._delete(id.toString())

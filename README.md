@@ -12,13 +12,16 @@ $ npm install --save-dev @circle/types
 
 ## Using spaces
 
-See `tests/spaces.test.ts` and `@circle/types` for more options.
+See `spaces/spaces.test.ts`, `posts/posts.test.ts`, and `@circle/types` for
+more options.
 
 ```ts
 import { Spaces } from '@circle/spaces'
 // Pass your API key to the constructor
 const api = new Spaces({ api_key: process.env.CIRCLE_API_KEY })
-await api.add({ community_id: 1, name: "New space" })
+const space = await api.add({ community_id: 1, name: "New space" })
+console.log(space.name)
+// "New space"
 ```
 
 ## Current support
@@ -26,8 +29,6 @@ await api.add({ community_id: 1, name: "New space" })
 - Posts CRUD
 
 ## @TODO
-- Refactor to not return response; only return what is asked for and throw
-  errors for failure states.
 - Invite members
 - Add members to spaces
 
@@ -76,6 +77,7 @@ $ npm publish --access public -ws --verbose
 ### @TODO
 - `npm run build` creates artefacts in `package/*/src` files that prevent
   interim package builds to not run which causes confusion.
+- Types other than Spaces and Posts
 
 ### Troubleshooting
 * If VSCode doesn't recognise the imports: reopen the project.
@@ -83,5 +85,5 @@ $ npm publish --access public -ws --verbose
   `npm run build:types`
 * If other packages aren't seeming to build while developing remove the
   additional artefacts in `./src` and run the build script. We should fix this.
-* Until overrode the `paths` and `exclude` in `tsconfig.json` at the root level
+* Until we overrode the `paths` and `exclude` in `tsconfig.json` at the root level
   we had all sorts of errors with resolving packages.
