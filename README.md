@@ -12,13 +12,16 @@ $ npm install --save-dev @circle/types
 
 ## Using spaces
 
-See `tests/spaces.test.ts` and `@circle/types` for more options.
+See `spaces/spaces.test.ts`, `posts/posts.test.ts`, and `@circle/types` for
+more options.
 
 ```ts
 import { Spaces } from '@circle/spaces'
 // Pass your API key to the constructor
 const api = new Spaces({ api_key: process.env.CIRCLE_API_KEY })
-await api.add({ community_id: 1, name: "New space" })
+const space = await api.add({ community_id: 1, name: "New space" })
+console.log(space.name)
+// "New space"
 ```
 
 ## Current support
@@ -26,8 +29,6 @@ await api.add({ community_id: 1, name: "New space" })
 - Posts CRUD
 
 ## @TODO
-- Refactor to not return response; only return what is asked for and throw
-  errors for failure states.
 - Invite members
 - Add members to spaces
 
