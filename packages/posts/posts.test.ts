@@ -2,7 +2,6 @@ import { Posts } from '@circle/posts'
 import { Spaces } from '@circle/spaces'
 
 import {
-  type SpaceProps,
   type SpacesCreateResponse,
   type PostsCreateProps,
   type PostsCreateResponse,
@@ -79,10 +78,27 @@ it('Show a post', async () => {
   expect(data.id).toBe(id)
 })
 
+it('Fetch the post index of a space', async () => {
+  const res = await api.index({ space_id })
+
+  expect(res).toHaveProperty('data')
+  expect(typeof res.data).toBe('object')
+  expect(Array.isArray(res.data)).toBe(true)
+  expect(res.data.length).toBe(1)
+
+  res.data.forEach((post: PostProps) => {
+    expect(post).toHaveProperty('id')
+    expect(post).toHaveProperty('name')
+    expect(post).toHaveProperty('body')
+    expect(post).toHaveProperty('slug')
+    expect(post).toHaveProperty('url')
+  })
+})
+
+// The API does not allow updates to the body.
 it('Update a post', async () => {
   const name = "Test post 001"
 
-  // Cannot update the body
   let res = await api.update({ id, name })
 
   expect(res).toHaveProperty('data')
