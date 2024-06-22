@@ -79,6 +79,36 @@ it('Show a post', async () => {
   expect(data.id).toBe(id)
 })
 
+it('Update a post', async () => {
+  const name = "Test post 001"
+
+  // Cannot update the body
+  let res = await api.update({ id, name })
+
+  expect(res).toHaveProperty('data')
+  expect(res.data).toHaveProperty('success')
+  expect(res.data.success).toBe(true)
+
+  expect(res.data).toHaveProperty('post')
+  let post = res.data.post
+  expect(post).toHaveProperty('name')
+  expect(post.name).toBe(name)
+  expect(post).toHaveProperty('body')
+  expect(typeof post.body).toBe('object')
+  expect(post.body).toHaveProperty('body')
+
+  // Get the post back
+  res = await api.show({ id })
+  expect(res).toHaveProperty('data')
+
+  post = res.data as PostProps
+  expect(post).toHaveProperty('name')
+  expect(post.name).toBe(name)
+  expect(post).toHaveProperty('body')
+  expect(typeof post.body).toBe('object')
+  expect(post.body).toHaveProperty('body')
+})
+
 it('Destroy a post', async () => {
   const res = await api.destroy({ id })
 

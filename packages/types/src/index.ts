@@ -70,10 +70,12 @@ export type PostsIndexProps = {
   status?: string           // all
   topics?: number[]         // Optional: Array with topic IDS for filtering posts
 }
+
+
 export type BodyProps = {
   id: number
   name: string
-  body: string
+  body: BodyProps
   record_type: string // 'Post'
   record_id: number // same as id?
   created_at: Date
@@ -142,10 +144,10 @@ export type PostsShowProps = {
   community_id?: number
 }
 
-export type PostsUpdateProps = {
+export type PostsUpdateProps = Partial<Omit<PostsCreateProps, 'body'>> & {
   id: number
   user_id?: number //
-} & Partial<PostsCreateProps>
+}
 
 export type CircleProps =
   SpacesIndexProps | SpacesCreateProps | SpacesShowProps
