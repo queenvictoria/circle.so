@@ -4,7 +4,9 @@ import {
   type SpacesCreateProps,
   type SpacesIndexProps,
   type SpacesShowProps,
-  type CircleResponse
+  type CircleResponse,
+  SpacesIndexResponse,
+  SpaceProps
 } from '@circle/types'
 
 
@@ -19,7 +21,7 @@ export class Spaces extends BaseService {
   /**
    * List all spaces in a community
    */
-  list (params?: SpacesIndexProps): Promise<CircleResponse> {
+  list (params?: SpacesIndexProps): Promise<SpacesIndexResponse> {
     if ( !params?.community_id) throw new Error("Index requires a `community_id` integer.")
 
     return this._get([], params)
@@ -29,8 +31,10 @@ export class Spaces extends BaseService {
   /**
    * Create a space in a community
    */
-  add (params: SpacesCreateProps): Promise<CircleResponse> {
-    return this._post(params)
+  async add (params: SpacesCreateProps): Promise<SpaceProps | undefined> {
+    const data = await this._post(params)
+
+    if (data?.space) return data.space
   }
   create = this.add
 

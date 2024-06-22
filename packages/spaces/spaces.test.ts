@@ -4,6 +4,7 @@ import {
   type SpacesCreateProps,
   type SpacesCreateResponse,
   type SpaceProps,
+  SpacesIndexResponse,
 } from '@circle/types'
 
 import { expect, test } from '@jest/globals'
@@ -21,12 +22,8 @@ if ( !process.env.CIRCLE_API_KEY ) throw new Error("Please add CIRCLE_API_KEY to
 const api = new Spaces({ api_key: process.env.CIRCLE_API_KEY })
 
 test('Fetch the index community spaces', async () => {
-  const res = await api.index({ community_id })
+  const data: SpacesIndexResponse = await api.index({ community_id })
 
-  expect(res.response).toHaveProperty('status')
-  expect(res.response.status).toBe(200)
-
-  const data = res.data as SpaceProps[]
   expect(typeof data).toEqual("object")
   expect(Array.isArray(data)).toEqual(true)
 
@@ -42,12 +39,8 @@ test('Fetch the index community spaces', async () => {
 }, 20 * 1000)
 
 test('Show a space', async () => {
-  const res = await api.show({ community_id, id })
+  const data = await api.show({ community_id, id })
 
-  expect(res.response).toHaveProperty('status')
-  expect(res.response.status).toBe(200)
-
-  const data = res.data as SpaceProps
   expect(typeof data).toEqual("object")
 
   expect(data).toHaveProperty('id')
@@ -58,12 +51,8 @@ test('Show a space', async () => {
 
 
 test('Get a space without providing a community_id', async () => {
-  const res = await api.show({ id })
+  const data = await api.show({ id })
 
-  expect(res.response).toHaveProperty('status')
-  expect(res.response.status).toBe(200)
-
-  const data = res.data as SpaceProps
   expect(typeof data).toEqual("object")
 
   expect(data).toHaveProperty('id')
@@ -75,33 +64,22 @@ test('Get a space without providing a community_id', async () => {
 test('Create a space', async () => {
   const name = "Test space"
   const props: SpacesCreateProps = { name, community_id }
-  const res = await api.add(props)
+  const data = await api.add(props)
 
-  expect(res.response).toHaveProperty('status')
-  expect(res.response.status).toBe(200)
+  expect(typeof data).toEqual('object')
+  expect(data).toHaveProperty('name')
+  expect(data?.name).toEqual(name)
+  expect(data).toHaveProperty('id')
 
-  const data = res.data as SpacesCreateResponse
-
-  expect(data).toHaveProperty('success')
-  expect(data.success).toBe(true)
-  expect(data).toHaveProperty('space')
-  expect(data.space).toHaveProperty('name')
-  expect(data.space.name).toEqual(name)
-  expect(data.space).toHaveProperty('id')
-
-  new_id = data.space.id
+  new_id = data?.id || -1
 })
 
 // The API can't update Spaces.
 
 test('Destroy a space', async () => {
-  const res = await api.destroy({ id: new_id })
+  const data = await api.destroy({ id: new_id })
 
-  expect(res.response).toHaveProperty('status')
-  expect(res.response.status).toBe(200)
-
-  const data = res.data
-  expect(data).toEqual({})
+  expect(data).toEqual(undefined)
 
   // Check if it is really gone. This will throw.
   const action = async () => {

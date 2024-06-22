@@ -1,7 +1,5 @@
 import { Url } from "url"
 
-export type SpacesProps = {}
-
 export type SpacesIndexProps = {
   community_id: number      //
   sort?: string             // latest (default) | active
@@ -48,11 +46,7 @@ export type SpacesCreateProps = {
   topics?: number[]
 }
 
-export type SpacesCreateResponse = {
-  success: boolean
-  message: string
-  space: SpaceProps
-}
+export type SpacesCreateResponse = SpaceProps
 
 export type SpacesShowProps = {
   id: number
@@ -154,7 +148,4 @@ export type CircleProps =
   |
   PostsIndexProps | PostsCreateProps | PostsShowProps
 
-export type CircleResponse = {
-  response: Response
-  data: any
-}
+export type CircleResponse = any

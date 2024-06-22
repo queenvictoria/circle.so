@@ -5,7 +5,8 @@ import {
   type PostsIndexProps,
   type PostsShowProps,
   type PostsUpdateProps,
-  type CircleResponse
+  type CircleResponse,
+  PostProps
 } from '@circle/types'
 
 
@@ -30,30 +31,34 @@ export class Posts extends BaseService {
   /**
    * Create a post in a space
    */
-  add (params: PostsCreateProps): Promise<CircleResponse> {
+  async add (params: PostsCreateProps): Promise<PostProps | undefined> {
     if ( !params?.space_id) throw new Error("Create requires a `space_id` integer.")
+    const data = await this._post(params)
 
-    return this._post(params)
+    if (data?.post) return data.post
   }
   create = this.add
 
   /**
    * Get a single post
    */
-  retrieve ({id, community_id}: PostsShowProps): Promise<CircleResponse> {
+  async retrieve ({id, community_id}: PostsShowProps): Promise<PostProps | undefined> {
     const params = { community_id } as PostsShowProps
+    const data = await this._get([id.toString()], params)
 
-    return this._get([id.toString()], params)
+    if (data?.success === false) return
+    return data
   }
   show = this.retrieve
 
   /**
    * Update a single post
    */
-  update (params: PostsUpdateProps): Promise<CircleResponse> {
+  async update (params: PostsUpdateProps): Promise<CircleResponse> {
     const { id } = params
+    const data = await this._patch([id.toString()], params)
 
-    return this._patch([id.toString()], params)
+    if (data?.post) return data.post
   }
 
   /**
