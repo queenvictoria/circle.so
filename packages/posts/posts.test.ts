@@ -27,7 +27,7 @@ let space_id:number
 beforeAll(async () => {
   const name = "Test space"
 
-  const data = await spaces_api.add({ name, community_id})
+  const data: SpacesCreateResponse = await spaces_api.add({ name, community_id})
   space_id = data?.id || -1
 })
 
@@ -40,7 +40,7 @@ it('Send a post to a space', async () => {
   const body = "Lorem ipsum"
   const props: PostsCreateProps = { space_id, name, body }
 
-  const data = await api.add(props)
+  const data: PostsCreateResponse = await api.add(props)
 
   expect(typeof data).toEqual("object")
 
