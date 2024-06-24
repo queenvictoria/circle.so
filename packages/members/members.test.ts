@@ -36,11 +36,25 @@ afterAll(async () => {
   await spaces_api.destroy({id: space_id})
 })
 
+// Doesn't seem to be notifying invited members.
+// The UI has a switch for this. skip_invitation? If password is set invitation
+// is not emailed.
+// If the user already exists with a password an email is not sent either.
+// But they are added to the new space.
+// Can use space_members add if the member is already in the community.
+// fetch("https://app.circle.so/api/v1/space_members?email=member@circle.co&space_id=693100&community_id=11111", requestOptions)
 it('Invite a member to a space', async () => {
   const name = "Test member"
   const email = process.env.USER_EMAIL || ''
   const password = process.env.USER_PASS || ''
-  const props: MembersCreateProps = { community_id, space_ids: [space_id], name, email, password }
+  const props: MembersCreateProps = {
+    community_id,
+    space_ids: [space_id],
+    name,
+    email,
+    password,
+    skip_invitation: false
+  }
 
   const data: MembersCreateResponse = await api.add(props)
 
@@ -50,7 +64,8 @@ it('Invite a member to a space', async () => {
   expect(data?.name).toEqual(name)
   expect(data).toHaveProperty('id')
   expect(data).toHaveProperty('email')
-  expect(data?.email).toEqual(email)
+  expect(data?.email.toLowerCase()).toEqual(email.toLowerCase())
+  // Even if spaces are set they don't show up here.
   // expect(data).toHaveProperty('space_ids')
   // expect(data?.space_ids).toEqual([space_id])
   expect(data).toHaveProperty('community_id')
@@ -59,6 +74,8 @@ it('Invite a member to a space', async () => {
   id = data?.id || -1
 })
 
+// Show space and show member don't seem to show spaces.
+// There isn't a GET space_members listed in the API.
 it('Show a member', async () => {
   const data = await api.show({ id, community_id })
 
@@ -67,12 +84,12 @@ it('Show a member', async () => {
   expect(data).toHaveProperty('id')
   expect(data?.id).toBe(id)
   expect(data).toHaveProperty('email')
-  expect(data?.email).toBe(process.env.USER_EMAIL)
+  expect(data?.email).toBe(process.env.USER_EMAIL?.toLowerCase())
 })
 
 it('Fetch the member index of a community', async () => {
   const data = await api.index({ })
-  console.log(data)
+
   expect(Array.isArray(data)).toBe(true)
   expect(data.length).toBeGreaterThan(1) // Our core user and some new ones.
 

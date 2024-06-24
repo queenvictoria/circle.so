@@ -154,7 +154,7 @@ export type MembersCreateProps = {
   linkedin_url?: Url
   facebook_url?: Url
   avatar?: Url
-  skip_invitation?: boolean
+  skip_invitation?: boolean // Always true if password is set.
   location?: string
 }
 
