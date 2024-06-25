@@ -52,7 +52,7 @@ it('Invite a member to a space', async () => {
     space_ids: [space_id],
     name,
     email,
-    password,
+    // password, // Setting a password means the invite won't be sent.
     skip_invitation: false
   }
 
