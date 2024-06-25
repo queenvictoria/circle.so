@@ -14,10 +14,7 @@
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
     "paths": {
-      "@circle/core": ["./packages/core/src"],
-      "@circle/members": ["./packages/members/src"],
-      "@circle/spaces": ["./packages/spaces/src"],
-      "@circle/types": ["./packages/types/src"]
+      "@circle/*": ["./packages/*/"]
     }
   }
 }
