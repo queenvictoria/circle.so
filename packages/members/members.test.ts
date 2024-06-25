@@ -1,11 +1,11 @@
-import { Members } from '@circle/members'
-import { Spaces } from '@circle/spaces'
+import { Members } from '@circle.so/members'
+import { Spaces } from '@circle.so/spaces'
 
 import {
   type MembersCreateProps,
   type MembersCreateResponse,
   type MemberProps,
-} from '@circle/types'
+} from '@circle.so/types'
 
 import { expect, test } from '@jest/globals'
 
@@ -42,7 +42,7 @@ afterAll(async () => {
 // If the user already exists with a password an email is not sent either.
 // But they are added to the new space.
 // Can use space_members add if the member is already in the community.
-// fetch("https://app.circle.so/api/v1/space_members?email=member@circle.co&space_id=693100&community_id=11111", requestOptions)
+// fetch("https://app.circle.so/api/v1/space_members?email=member@circle.so.co&space_id=693100&community_id=11111", requestOptions)
 it('Invite a member to a space', async () => {
   const name = "Test member"
   const email = process.env.USER_EMAIL || ''

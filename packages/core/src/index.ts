@@ -1,7 +1,7 @@
 import {
   type CircleProps,
   type CircleResponse
-} from '@circle/types'
+} from '@circle.so/types'
 
 export class BaseService {
   base_url = 'https://app.circle.so/api/v1'

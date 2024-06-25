@@ -1,6 +1,6 @@
 module.exports = {
   "extends": [
-    "@circle/eslint-config"
+    "@circle.so/eslint-config"
   ],
   "parserOptions": {
     "tsconfigRootDir": __dirname

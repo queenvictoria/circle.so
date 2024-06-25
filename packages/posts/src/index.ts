@@ -1,4 +1,4 @@
-import { BaseService } from '@circle/core'
+import { BaseService } from '@circle.so/core'
 
 import {
   type PostsCreateProps,
@@ -8,7 +8,7 @@ import {
   type PostsShowProps,
   type PostsUpdateProps,
   type PostProps,
-} from '@circle/types'
+} from '@circle.so/types'
 
 
 export class Posts extends BaseService {

@@ -4,7 +4,7 @@
   "keywords": [],
   "license": "ISC",
   "main": "dist/index",
-  "name": "@circle/core",
+  "name": "@circle.so/core",
   "publishConfig": {
     "access": "public"
   },
@@ -13,8 +13,8 @@
     "prepack": "cp ../../README.md ./ && cp ../../LICENSE ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
-    "@circle/types": "*"
+    "@circle.so/types": "*"
   }
 }

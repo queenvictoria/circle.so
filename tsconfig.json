@@ -6,7 +6,7 @@
     "noEmit": true,
     // Override paths while developing to point to src rather than dist.
     "paths": {
-      "@circle/*": ["packages/*/src"]
+      "@circle.so/*": ["packages/*/src"]
     }
   },
   "include": [

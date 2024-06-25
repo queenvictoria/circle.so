@@ -1,4 +1,4 @@
-import { BaseService } from '@circle/core'
+import { BaseService } from '@circle.so/core'
 
 import {
   type MembersCreateProps,
@@ -8,7 +8,7 @@ import {
   type MembersShowProps,
   type MembersUpdateProps,
   type MemberProps,
-} from '@circle/types'
+} from '@circle.so/types'
 
 
 export class Members extends BaseService {

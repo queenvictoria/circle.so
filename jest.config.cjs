@@ -13,6 +13,6 @@ module.exports = {
     "/dist/",
   ],
   moduleNameMapper: {
-    '^@circle/(.*)$': '<rootDir>/packages/$1/src/'
+    '^@circle.so/(.*)$': '<rootDir>/packages/$1/src/'
   }
 }

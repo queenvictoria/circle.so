@@ -5,7 +5,7 @@
   "keywords": [],
   "license": "ISC",
   "main": "dist/index",
-  "name": "@circle/types",
+  "name": "@circle.so/types",
   "publishConfig": {
     "access": "public"
   },
@@ -15,5 +15,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "types": "dist/index",
-  "version": "0.0.1"
+  "version": "0.0.2"
 }

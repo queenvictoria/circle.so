@@ -1,5 +1,5 @@
 {
-  "name": "@circle/circle",
+  "name": "@circle.so/circle",
   "version": "0.0.1",
   "description": "Client wrappers around the Circle.so API.",
   "scripts": {
@@ -25,11 +25,7 @@
     "community",
     "discussion"
   ],
-  "author": {
-    "name": "Snow",
-    "email": "snow@hol.ly",
-    "url": "https://hol.ly/"
-  },
+  "author": "Snow <snow@hol.ly> (https://hol.ly/)",
   "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/queenvictoria/circle/issues"
@@ -51,10 +47,14 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@circle/core": "^0.0.1",
-    "@circle/members": "^0.0.1",
-    "@circle/posts": "^0.0.1",
-    "@circle/spaces": "^0.0.1",
-    "@circle/types": "^0.0.1"
+    "@circle.so/core": "^0.0.1",
+    "@circle.so/members": "^0.0.1",
+    "@circle.so/posts": "^0.0.1",
+    "@circle.so/spaces": "^0.0.1",
+    "@circle.so/types": "^0.0.1"
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
   }
 }

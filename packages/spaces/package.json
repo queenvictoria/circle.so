@@ -4,7 +4,7 @@
   "keywords": [],
   "license": "ISC",
   "main": "dist/index",
-  "name": "@circle/spaces",
+  "name": "@circle.so/spaces",
   "publishConfig": {
     "access": "public"
   },
@@ -14,9 +14,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "types": "dist/index.d.ts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
-    "@circle/core": "*",
-    "@circle/types": "^0.0.1"
+    "@circle.so/core": "*",
+    "@circle.so/types": "^0.0.1"
   }
 }

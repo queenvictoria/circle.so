@@ -1,11 +1,11 @@
-import { Spaces } from '@circle/spaces'
+import { Spaces } from '@circle.so/spaces'
 
 import {
   type SpacesCreateProps,
   type SpacesCreateResponse,
   type SpaceProps,
   SpacesIndexResponse,
-} from '@circle/types'
+} from '@circle.so/types'
 
 import { expect, test } from '@jest/globals'
 

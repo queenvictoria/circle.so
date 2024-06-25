@@ -5,18 +5,18 @@ Create an API token here:
 
 ## Installation
 ```bash
-$ npm install --save @circle/posts
-$ npm install --save @circle/spaces
-$ npm install --save-dev @circle/types
+$ npm install --save @circle.so/posts
+$ npm install --save @circle.so/spaces
+$ npm install --save-dev @circle.so/types
 ```
 
 ## Using spaces
 
-See `spaces/spaces.test.ts`, `posts/posts.test.ts`, and `@circle/types` for
+See `spaces/spaces.test.ts`, `posts/posts.test.ts`, and `@circle.so/types` for
 more options.
 
 ```ts
-import { Spaces } from '@circle/spaces'
+import { Spaces } from '@circle.so/spaces'
 // Pass your API key to the constructor
 const api = new Spaces({ api_key: process.env.CIRCLE_API_KEY })
 const space = await api.add({ community_id: 1, name: "New space" })
@@ -56,14 +56,14 @@ https://www.yieldcode.blog/post/npm-workspaces/
 https://stackoverflow.com/questions/72055371/npm-workspaces-typescript-unable-to-find-local-modules
 
 ```bash
-$ npm init --workspace packages/types --scope @circle -y
-$ ls -la node_modules/@circle/
+$ npm init --workspace packages/types --scope @circle.so -y
+$ ls -la node_modules/@circle.so/
 ```
 
 ### Require a new package
 
 ```bash
-$ npm install @circle/types --workspace ./packages/spaces
+$ npm install @circle.so/types --workspace ./packages/spaces
 $ cat packages/spaces/package.json | grep -C1 circle
 $ npm ls
 ```

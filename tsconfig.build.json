@@ -14,7 +14,7 @@
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
     "paths": {
-      "@circle/*": ["./packages/*/"]
+      "@circle.so/*": ["./packages/*/"]
     }
   }
 }

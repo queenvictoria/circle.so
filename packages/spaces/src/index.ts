@@ -1,4 +1,4 @@
-import { BaseService } from '@circle/core'
+import { BaseService } from '@circle.so/core'
 
 import {
   type SpacesCreateProps,
@@ -6,7 +6,7 @@ import {
   type SpacesShowProps,
   type SpacesIndexResponse,
   type SpaceProps
-} from '@circle/types'
+} from '@circle.so/types'
 
 
 export class Spaces extends BaseService {

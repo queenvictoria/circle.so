@@ -1,12 +1,12 @@
-import { Posts } from '@circle/posts'
-import { Spaces } from '@circle/spaces'
+import { Posts } from '@circle.so/posts'
+import { Spaces } from '@circle.so/spaces'
 
 import {
   type SpacesCreateResponse,
   type PostsCreateProps,
   type PostsCreateResponse,
   type PostProps,
-} from '@circle/types'
+} from '@circle.so/types'
 
 import { expect, test } from '@jest/globals'
 
