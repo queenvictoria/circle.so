@@ -14,7 +14,8 @@
     "packages/types",
     "packages/core",
     "packages/spaces",
-    "packages/posts"
+    "packages/posts",
+    "packages/members"
   ],
   "repository": {
     "type": "git",
@@ -51,6 +52,7 @@
   },
   "dependencies": {
     "@circle/core": "^0.0.1",
+    "@circle/members": "^0.0.1",
     "@circle/posts": "^0.0.1",
     "@circle/spaces": "^0.0.1",
     "@circle/types": "^0.0.1"

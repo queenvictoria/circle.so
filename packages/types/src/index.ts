@@ -132,14 +132,86 @@ export type PostsShowProps = {
   community_id?: number
 }
 
+
 export type PostsUpdateProps = Partial<Omit<PostsCreateProps, 'body'>> & {
   id: number
   user_id?: number //
 }
 
+export type MembersCreateProps = {
+  email: string
+  password?: string
+  name: string
+  community_id?: number
+  space_ids?: number[]
+  space_group_ids?: number[]
+  member_tag_ids?: []
+  headline?: string
+  bio?: string
+  website_url?: Url
+  instagram_url?: Url
+  twitter_url?: Url
+  linkedin_url?: Url
+  facebook_url?: Url
+  avatar?: Url
+  skip_invitation?: boolean // Always true if password is set.
+  location?: string
+}
+
+export type MembersSearchProps = {
+  email: string
+  community_id?: number
+}
+
+export type MembersIndexProps = {
+  sort?: string             // latest (default) | active
+  per_page?: number         // defaults to 60. Maximum 100.
+  page?: number
+  status?: string      // 'active'
+}
+
+export type MembersShowProps = {
+  id: number
+  community_id?: number
+}
+
+export type ProfileFieldProps = any
+export type TagProps = any
+
+export type MemberProps = MembersCreateProps & {
+  id: number
+  community_id?: number
+  last_seem_at: Date
+  profile_url: Url
+  public_uuid: string
+  profile_fields: ProfileFieldProps[]
+  avatar_url: Url
+  user_id: number
+  topics_count: number
+  posts_count: number
+  comments_count: number
+  accepted_invitation: Date
+  active: boolean
+  sso_provider_user_id?: string
+  member_tags: TagProps[]
+}
+
+export type MembersUpdateProps = {
+  id: number
+  community_id?: number
+  space_ids?: number[]
+  space_group_ids?: number[]
+  skip_invitation?: boolean
+}
+
+export type MembersIndexResponse = MemberProps[]
+export type MembersCreateResponse = MemberProps
+
 export type CircleProps =
   SpacesIndexProps | SpacesCreateProps | SpacesShowProps
   |
   PostsIndexProps | PostsCreateProps | PostsShowProps
+  |
+  MembersIndexProps | MembersCreateProps | MembersShowProps
 
 export type CircleResponse = any

@@ -32,6 +32,9 @@ console.log(space.name)
 - Invite members
 - Add members to spaces
 
+### Debug
+- Can't deliver email to Valorise.ai?
+
 ## Contributing
 
 Uses patterns for a typescript monorepo found here:
