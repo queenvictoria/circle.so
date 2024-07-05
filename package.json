@@ -47,11 +47,11 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@circle.so/core": "^0.0.1",
-    "@circle.so/members": "^0.0.1",
-    "@circle.so/posts": "^0.0.1",
-    "@circle.so/spaces": "^0.0.1",
-    "@circle.so/types": "^0.0.1"
+    "@circle.so/core": "*",
+    "@circle.so/members": "*",
+    "@circle.so/posts": "*",
+    "@circle.so/spaces": "*",
+    "@circle.so/types": "*"
   },
   "main": "index.js",
   "directories": {
