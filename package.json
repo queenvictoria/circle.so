@@ -1,13 +1,13 @@
 {
   "name": "@circle.so/circle",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Client wrappers around the Circle.so API.",
   "scripts": {
     "build": "tsc --build --verbose tsconfig.build.json",
     "build:types": "rm -rf ./packages/types/dist && tsc --project ./packages/types/tsconfig.pkg.json",
     "build:core": "rm -rf ./packages/core/dist && tsc --project ./packages/core/tsconfig.pkg.json",
     "build:spaces": "rm -rf ./packages/spaces/dist && tsc --project ./packages/spaces/tsconfig.pkg.json",
-    "clean": "npm exec --workspaces -- npx rimraf node_modules && npx rimraf node_modules && npm exec --workspaces -- npx rimraf dist && npx rimraf dist",
+    "clean": "npm exec --workspaces -- npx rimraf node_modules && npm exec --workspaces -- npx rimraf src/index.js && npm exec --workspaces -- npx rimraf src/index.d.ts && npx rimraf node_modules && npm exec --workspaces -- npx rimraf dist && npx rimraf dist",
     "test": "jest"
   },
   "workspaces": [
